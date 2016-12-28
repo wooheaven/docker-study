@@ -28,3 +28,8 @@ docker ps -a
 ```
 docker attach 42ff601ded9a
 ```
+
+# [docker exit](06_docker_exit.md)
+```
+root@42ff601ded9a:/# exit
+```
