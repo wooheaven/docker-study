@@ -17,3 +17,9 @@ docker pull
 ```
 docker run -it ubuntu:14.04 /bin/bash
 ```
+
+# [docker ps](05_docker_ps.md)
+```
+docker ps
+docker ps -a
+```
