@@ -1,5 +1,6 @@
-#[docker images]
+# 
 ```
+docker images
 REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
 tensorflow                     ch2                 0b1caa86248b        11 weeks ago        2.776 GB
 gcr.io/tensorflow/tensorflow   latest-devel        ef3b8aa4d0c3        3 months ago        2.775 GB
