@@ -38,3 +38,8 @@ docker start 42ff601ded9a
 ```
 root@42ff601ded9a:/# exit
 ```
+
+# [docker commit](09_docker_commit.md)
+```
+docker commit 42ff601ded9a ubuntu:14.04-python2.7
+```
