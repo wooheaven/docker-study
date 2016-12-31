@@ -34,7 +34,7 @@ docker attach 42ff601ded9a
 docker start 42ff601ded9a
 ```
 
-# [docker exit](08_docker_exit.md)
+# [docker exit](09_docker_exit.md)
 ```
 root@42ff601ded9a:/# exit
 ```
