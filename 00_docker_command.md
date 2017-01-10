@@ -42,6 +42,7 @@ docker start 42ff601ded9a
 # [docker exit](09_docker_exit.md)
 ```
 root@42ff601ded9a:/# exit
+root@14asdfj8ad83:/# Ctl + P + Q
 ```
 
 # [docker commit](10_docker_commit.md)
