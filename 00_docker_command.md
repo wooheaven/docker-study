@@ -15,7 +15,7 @@ docker pull
 
 # [docker run](04_docker_run.md)
 ```
-docker run -it -p 127.0.0.1:9999:9999 ubuntu:14.04-python2.7 /bin/bash
+docker run -it -p 127.0.0.1:9999:9999 -v /Users/rwoo/2_Workspace/17_Python_workspace/Python2.7-Study:/home/python_workspace --name="py27study" ubuntu:14.04-python2.7 /bin/bash
 ```
 
 # [docker ps](05_docker_ps.md)
