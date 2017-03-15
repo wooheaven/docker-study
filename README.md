@@ -62,3 +62,10 @@ $ docker create -v /var/lib/postgresql/data --name postgres9.3.6-data busybox
 $ docker create -v `pwd`/testFolder:/tmp/testFolder --name dataContainer busybox
 $ docker run -it --name localContainer -d --volumes-from dataContainer busybox:latest sh
 ```
+
+# [gitlab_on_docker](13_install_gitlab_on_docker.md)
+```{bash}
+$ docker start gitlab
+http://localhost
+$ docker stop gitlab
+```
