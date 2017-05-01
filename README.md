@@ -69,7 +69,7 @@ $ docker create -v `pwd`/testFolder:/tmp/testFolder --name dataContainer busybox
 $ docker run -it --name localContainer -d --volumes-from dataContainer busybox:latest sh
 ```
 
-# [gitlab_on_docker](13_install_gitlab_on_docker.md)
+# [gitlab_on_docker](13_gitlab_ce_on_docker.md)
 ```{bash}
 $ docker start gitlab
 http://localhost
