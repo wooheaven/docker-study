@@ -32,7 +32,7 @@ $ docker ps
 $ docker ps -a
 ```
 
-# [docker port](06_docker_port.md)
+# [docker port](00_docker_command/06_docker_port.md)
 ```{bash}
 $ docker port
 ```
