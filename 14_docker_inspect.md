@@ -1,4 +1,4 @@
-# docker inspec
+# docker inspect
 ```{bash}
 $ docker inspect --format "{{ json .Mounts }}" gitlab | python -m json.tool
 [
