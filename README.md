@@ -16,7 +16,7 @@ $ docker images
 $ docker search ubuntu
 ```
 
-# [docker pull](03_docker_pull.md)
+# [docker pull](00_docker_command/03_docker_pull.md)
 ```{bash}
 $ docker pull
 ```
