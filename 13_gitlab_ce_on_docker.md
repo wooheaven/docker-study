@@ -1,7 +1,7 @@
 # docker-ce image
 ```{bash}
 $ pwd
-/home/rwoo/02_workspace/04_Git_Workspace/Local_GitLab_Workspace	
+/home/rwoo/02_workspace/03_Git_Workspace/Local_GitLab_Workspace	
 
 # /srv/gitlab/data	/var/opt/gitlab		For storing application data
 # /srv/gitlab/logs	/var/log/gitlab		For storing logs
