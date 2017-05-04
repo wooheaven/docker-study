@@ -75,3 +75,8 @@ $ docker start gitlab
 http://localhost
 $ docker stop gitlab
 ```
+
+# [docker inspect](14_docker_inspect.md)
+```{bash}
+$ docker inspect --format "{{ json .Mounts }}" gitlab | python -m json.tool
+```
