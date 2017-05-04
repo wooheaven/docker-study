@@ -6,7 +6,7 @@ $ sudo apt-get install docker-ce
 $ docker -v
 ```
 
-# [docker images](01_docker_images.md)
+# [docker images](00_docker_command/01_docker_images.md)
 ```{bash}
 $ docker images
 ```
