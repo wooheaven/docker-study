@@ -1,6 +1,6 @@
 # lists the available local images which you can use to create a Docker container.
 ```
-docker images
+$ docker images
 
 REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
 tensorflow                     ch2                 0b1caa86248b        11 weeks ago        2.776 GB

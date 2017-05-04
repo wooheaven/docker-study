@@ -1,6 +1,6 @@
 # search remote docker images which is available 
 ```
-docker search ubuntu
+$ docker search ubuntu
 
 NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
 ubuntu                            Ubuntu is a Debian-based Linux operating s...   5269      [OK]       
