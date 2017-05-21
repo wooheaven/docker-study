@@ -80,3 +80,8 @@ $ docker stop gitlab
 ```{bash}
 $ docker inspect --format "{{ json .Mounts }}" gitlab | python -m json.tool
 ```
+
+# [docker copy](00_docker_command/15_docker_cp.md)
+```{bash}
+$ docker cp scala-2.12.1.deb ubuntu14.04:/
+```
