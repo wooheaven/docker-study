@@ -1,4 +1,4 @@
-# docker-ce image
+# pull gitlab_ce image
 ```{bash}
 $ pwd
 /home/rwoo/02_workspace/03_Git_Workspace/Local_GitLab_Workspace	
@@ -33,24 +33,39 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 gitlab/gitlab-ce    latest              b912fec48b7c        7 days ago          1.21 GB
 ```
 
-# docker run
+# run gitlab_ce contianer
 ```{bash}
 $ sudo docker run --detach \
 --hostname gitlab.example.com \
---publish 443:443 --publish 80:80 --publish 220:22 \
+--publish --publish 18080:80 --publish 220:22 \
 --name gitlab \
 --restart always \
 --volume `pwd`/srv/gitlab/config:/etc/gitlab \
 --volume `pwd`/srv/gitlab/logs:/var/log/gitlab \
 --volume `pwd`/srv/gitlab/data:/var/opt/gitlab \
- gitlab/gitlab-ce:latest
+gitlab/gitlab-ce:latest
+```
+
+# configure gitlab_ce container
+```{bash}
+$ sudo docker exec -it gitlab /bin/bash
+
+root@gitlab:/# update-permissions
+root@gitlab:/# mkdir #folder
+root@gitlab:/# Ctrl + p + q
+
+$ sudo docker restart gitlab
 ```
 
 # in browser
 ```{text}
 # The very first time you visit GitLab, you will be asked to set up the admin password. 
 # After you change it, you can login with username root and the password you set up.
-http://localhost
+http://localhost:18080
+
+New password : gitlab123123
+Username or email : wooheaven79@gmail.com
+Password : gitlab123123
 ```
 
 # in container console
