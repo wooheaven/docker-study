@@ -85,3 +85,9 @@ $ docker inspect --format "{{ json .Mounts }}" gitlab | python -m json.tool
 ```{bash}
 $ docker cp scala-2.12.1.deb ubuntu14.04:/
 ```
+
+# [docker build](00_docker_command/16_docker_build.md)
+```{bash}
+$ docker build -t image:tag -f Dockerfile .
+$ docker images
+```
