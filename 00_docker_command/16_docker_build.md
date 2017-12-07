@@ -102,7 +102,12 @@ $ docker images
 $ # nvidia/cuda:test
 $ cat Dockerfile-test.txt
 ARG repository
+ARG JPASSWD
 FROM ${repository}:8.0-runtime-cudnn6-ubuntu14.04
+
+# bash shell
+SHELL ["/bin/bash", "-c"]
+
 # install anaconda3
 RUN apt-get update && apt-get install -y wget vim && rm -rf /var/lib/apt/lists/*
 RUN wget -q https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
@@ -112,44 +117,38 @@ RUN echo 'export PATH="$PATH:/root/anaconda3/bin"' >> /root/.bashrc
 ENV PATH $PATH:/root/anaconda3/bin
 RUN echo $PATH
 
-ubuntu@ubuntu:~/Documents/docker$ cat Dockerfile-test1
-ARG repository
-FROM ${repository}:test
 # conda create env
-RUN ["/bin/bash", "-c", "conda create --name python354 python=3.5.4 -y"]
-# conda install package
-RUN ["/bin/bash", "-c", "source activate python354 && conda install -y pandas numpy ipython jupyter matplotlib scipy && conda info --envs"]
-ubuntu@ubuntu:~/Documents/docker$ cat Dockerfile-test2
-ARG repository
-FROM ${repository}:test1
-# conda install tensorflow_gpu
-RUN ["/bin/bash", "-c", "source activate python354 && pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.4.0-cp35-cp35m-linux_x86_64.whl"]
-ubuntu@ubuntu:~/Documents/docker$ cat Dockerfile-test1 >> Dockerfile-test
-ubuntu@ubuntu:~/Documents/docker$ cat Dockerfile-test2 >> Dockerfile-test
-ubuntu@ubuntu:~/Documents/docker$ vi Dockerfile-test
-ubuntu@ubuntu:~/Documents/docker$ cat Dockerfile-test
-ARG repository
-FROM ${repository}:8.0-runtime-cudnn6-ubuntu14.04
-
-# install anaconda3
-RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
-RUN wget -q https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-RUN chmod +x Anaconda3-5.0.1-Linux-x86_64.sh
-RUN /bin/bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /root/anaconda3
-RUN echo 'export PATH="$PATH:/root/anaconda3/bin"' >> /root/.bashrc
-ENV PATH $PATH:/root/anaconda3/bin
-RUN echo $PATH
-
-# conda create env
-RUN ["/bin/bash", "-c", "conda create --name python354 python=3.5.4 -y"]
+RUN conda create --name python354 python=3.5.4 -y
 
 # conda install package
-RUN ["/bin/bash", "-c", "source activate python354 && conda install -y pandas numpy ipython jupyter matplotlib scipy && conda info --envs"]
+RUN source activate python354 && conda install -y pandas numpy ipython jupyter matplotlib scipy scikit-learn pillow h5py pydot graphviz && conda info --envs
+RUN source activate python354 && conda list
 
 # conda install tensorflow_gpu
-RUN ["/bin/bash", "-c", "source activate python354 && pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.4.0-cp35-cp35m-linux_x86_64.whl"]
+RUN source activate python354 && pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.4.0-cp35-cp35m-linux_x86_64.whl
+RUN source activate python354 && conda list
 
-$ docker build -t nvidia/cuda:test --build-arg repository=nvidia/cuda -f Dockerfile-test .
+# conda install package
+RUN source activate python354 && conda install -y keras && python -c 'import keras; print(keras.__version__)'
+RUN cat /root/.keras/keras.json
+RUN source activate python354 && conda list
+
+# conda install protobuf
+RUN source activate python354 && pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/protobuf-3.1.0-cp35-none-linux_x86_64.whl
+RUN source activate python354 && conda list
+
+# jupyter notebook config
+RUN source activate python354 && jupyter notebook --generate-config --allow-root
+RUN cp /root/.jupyter/jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.bak
+
+# jupyter notebook passwd
+RUN echo ${JPASSWD} > /root/.jupyter/tmp1.txt
+RUN source activate python354 && ipython -c "from IPython.lib import passwd; f = open('/root/.jupyter/tmp1.txt'); line = f.readline(); print(passwd(line))" > /root/.jupyter/tmp2.txt
+RUN echo "c.NotebookApp.password = ""'"`cat /root/.jupyter/tmp2.txt`"'" > /root/.jupyter/jupyter_notebook_config.py
+RUN cat /root/.jupyter/jupyter_notebook_config.py
+RUN rm /root/.jupyter/tmp[1-2].txt
+
+$ docker build -t nvidia/cuda:test --build-arg repository=nvidia/cuda --build-arg JPASSWD=test -f Dockerfile-test .
 $ docker images
 ```
 
@@ -160,27 +159,7 @@ nvidia-docker run -it -p 8888:8888 -v /home/ubuntu/Downloads/workspace/:/root/wo
 ```{bash}
 $ docker start test
 $ docker attache test
+$ docker exec -it test /bin/bash
 
-$ jupyter notebook --generate-config --allow-root
-$ cd ~/.jupyter
-
-$ ipython
-Python 3.5.4 |Continuum Analytics, Inc.| (default, Aug 14 2017, 13:26:58)
-Type 'copyright', 'credits' or 'license' for more information
-IPython 6.1.0 -- An enhanced Interactive Python. Type '?' for help.
-
-In [1]: from IPython.lib import passwd
-
-In [2]: passwd()
-Enter password:
-Verify password:
-Out[2]: 'sha1:16690dc7ed06:c4824a9450b552dd91b1682aa73ed6ff760363ec'
-
-$ cp jupyter_notebook_config.py jupyter_notebook_config.bak
-
-$ cat echo "c.NotebookApp.password = 'sha1:16690dc7ed06:c4824a9450b552dd91b1682aa73ed6ff760363ec'" > jupyter_notebook_config.py
-
-$ source activate python354
-$ conda info --envs
 $ jupyter notebook --notebook-dir=/root/workspace/ --no-browser --ip=0.0.0.0 --allow-root
 ```
