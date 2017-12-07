@@ -33,6 +33,13 @@ RUN NVIDIA_GPGKEY_SUM=d1be581509378368edeec8c1eb2958702feedf3bc3d17011adbf24efac
 ENV CUDA_VERSION 8.0.61
 
 ENV CUDA_PKG_VERSION 8-0=$CUDA_VERSION-1
+
+# error
+# debconf: unable to initialize frontend: Dialog
+# debconf: (TERM is not set, so the dialog frontend is not usable.)
+# debconf: falling back to frontend: Readline
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
         cuda-nvrtc-$CUDA_PKG_VERSION \
         cuda-nvgraph-$CUDA_PKG_VERSION \
@@ -93,17 +100,18 @@ $ docker images
 
 ```{bash}
 $ # nvidia/cuda:test
-$ cat Dockerfile-test
+$ cat Dockerfile-test.txt
 ARG repository
 FROM ${repository}:8.0-runtime-cudnn6-ubuntu14.04
 # install anaconda3
-RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y wget vim && rm -rf /var/lib/apt/lists/*
 RUN wget -q https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN chmod +x Anaconda3-5.0.1-Linux-x86_64.sh
 RUN /bin/bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /root/anaconda3
 RUN echo 'export PATH="$PATH:/root/anaconda3/bin"' >> /root/.bashrc
 ENV PATH $PATH:/root/anaconda3/bin
 RUN echo $PATH
+
 ubuntu@ubuntu:~/Documents/docker$ cat Dockerfile-test1
 ARG repository
 FROM ${repository}:test
