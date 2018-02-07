@@ -84,7 +84,7 @@ sudo usermod -aG docker $USER
 sudo reboot
 ```
 
-# Verify that Docker CE is installed correctly by running the hello-world image.
+# Verify that docker-ce is installed correctly by running the hello-world image.
 ```
 docker --version
 Docker version 17.03.0-ce, build 3a232c8

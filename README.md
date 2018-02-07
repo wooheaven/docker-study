@@ -4,11 +4,7 @@
 | Install Docker  | [on Ubuntu14](00_docker_command/00_install_docker/00_on_ubuntu14.md) |
 |                 | [on Ubuntu16](00_docker_command/00_install_docker/01_on_ubuntu16.md) |
 | Docker Command  | [docker images](00_docker_command/01_docker_images.md)               |
-
-# [docker search](00_docker_command/02_docker_search.md)
-```{bash}
-$ docker search ubuntu
-```
+|                 | [docker search](00_docker_command/02_docker_search.md)               |
 
 # [docker pull](00_docker_command/03_docker_pull.md)
 ```{bash}
