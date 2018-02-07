@@ -21,13 +21,20 @@ sudo apt-key fingerprint 0EBFCD88
 
 # add stable repository
 ```
-ubuntu@ubuntu:~$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 ```
 
-# Install Docker-CE
+# Install docker-ce
 ```
 sudo apt-get update
 sudo apt-get install docker-ce
+```
+
+# Add docker group after install docker
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo reboot
 ```
 
 # Verify docker-ce
@@ -36,7 +43,7 @@ docker --version
 docker run hello-world
 ```
 
-# Uninstall Docker-ce
+# Uninstall docker-ce
 ```
 sudo apt-get purge docker-ce
 sudo rm -rf /var/lib/docker
