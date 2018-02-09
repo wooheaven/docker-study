@@ -41,4 +41,6 @@ busybox                        latest              00f017a8c2a6        2 days ag
 microsoft/azure-cli            latest              bccdaa9f5de0        2 weeks ago         540.1 MB
 tensorflow                     chapter3            4799641d3e61        5 months ago        3.072 GB
 gcr.io/tensorflow/tensorflow   latest-devel        ef3b8aa4d0c3        5 months ago        2.775 GB
+
+$ docker create -v /var/lib/postgresql/data --name postgres9.3.6-data busybox
 ```
