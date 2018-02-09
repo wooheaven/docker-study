@@ -5,43 +5,13 @@
 |                 | [on Ubuntu16](00_docker_command/00_install_docker/01_on_ubuntu16.md) |
 | Docker Command  | [docker images](00_docker_command/01_docker_images.md)               |
 |                 | [docker search](00_docker_command/02_docker_search.md)               |
-
-# [docker pull](00_docker_command/03_docker_pull.md)
-```{bash}
-$ docker pull
-```
-
-# [docker run](00_docker_command/04_docker_run.md)
-```{bash}
-$ docker run -it -p 127.0.0.1:9999:9999 -v /Users/rwoo/2_Workspace/17_Python_workspace/Python2.7-Study:/home/python_workspace --name="py27study" ubuntu:14.04-python2.7 /bin/bash
-```
-
-# [docker ps](00_docker_command/05_docker_ps.md)
-```{bash}
-$ docker ps
-$ docker ps -a
-```
-
-# [docker port](00_docker_command/06_docker_port.md)
-```{bash}
-$ docker port
-```
-
-# [docker attach](00_docker_command/07_docker_attach.md)
-```{bash}
-$ docker attach 42ff601ded9a
-```
-
-# [docker start](00_docker_command/08_docker_start.md)
-```{bash}
-$ docker start 42ff601ded9a
-```
-
-# [docker exit](00_docker_command/09_docker_exit.md)
-```{bash}
-root@42ff601ded9a:/# exit
-root@14asdfj8ad83:/# Ctl + P + Q
-```
+|                 | [docker pull](00_docker_command/03_docker_pull.md)                   |
+|                 | [docker run](00_docker_command/04_docker_run.md)                     |
+|                 | [docker ps](00_docker_command/05_docker_ps.md)                       |
+|                 | [docker port](00_docker_command/06_docker_port.md)                   |
+|                 | [docker attach](00_docker_command/07_docker_attach.md)               |
+|                 | [docker start](00_docker_command/08_docker_start.md)                 |
+|                 | [docker exit](00_docker_command/09_docker_exit.md)                   |
 
 # [docker commit](00_docker_command/10_docker_commit.md)
 ```{bash}
@@ -81,3 +51,7 @@ $ docker cp scala-2.12.1.deb ubuntu14.04:/
 $ docker build -t image:tag -f Dockerfile .
 $ docker images
 ```
+
+# [docker save](00_docker_command/17_docker_save.md)
+# [docker load](00_docker_command/18_docker_load.md)
+# [docker tag](00_docker_command/19_docker_tag.md)
