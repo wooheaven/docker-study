@@ -7,11 +7,13 @@ $ pwd
 # /srv/gitlab/logs	/var/log/gitlab		For storing logs
 # /srv/gitlab/config	/etc/gitlab		For storing the GitLab configuration files
 
+$ sudo rm -rf ./srv
 $ mkdir srv
 $ mkdir srv/gitlab
 $ mkdir srv/gitlab/config
 $ mkdir srv/gitlab/logs
 $ mkdir srv/gitlab/data
+
 $ docker pull gitlab/gitlab-ce:latest
 latest: Pulling from gitlab/gitlab-ce
 d54efb8db41d: Pull complete 
@@ -36,13 +38,15 @@ gitlab/gitlab-ce    latest              b912fec48b7c        7 days ago          
 # run gitlab_ce contianer
 ```{bash}
 $ sudo docker run --detach \
---hostname gitlab.example.com \
---publish --publish 18080:80 --publish 220:22 \
+--hostname localhost \
+--publish 18080:80 \
+--publish 220:22 \
 --name gitlab \
 --restart always \
 --volume `pwd`/srv/gitlab/config:/etc/gitlab \
 --volume `pwd`/srv/gitlab/logs:/var/log/gitlab \
 --volume `pwd`/srv/gitlab/data:/var/opt/gitlab \
+--env GITLAB_OMNIBUS_CONFIG="external_url 'http://localhost:18080'; gitlab_rails['gitlab_shell_ssh_port']=220;" \
 gitlab/gitlab-ce:latest
 ```
 
@@ -51,13 +55,19 @@ gitlab/gitlab-ce:latest
 $ sudo docker exec -it gitlab /bin/bash
 
 root@gitlab:/# update-permissions
-root@gitlab:/# mkdir #folder
+
+root@gitlab:/# mkdir /var/opt/gitlab/gitlab-rails/shared/registry
+root@gitlab:/# mkdir /var/log/gitlab/prometheus
+root@gitlab:/# mkdir /var/opt/gitlab/nginx
+root@gitlab:/# mkdir /var/opt/gitlab/nginx/*_cache
+
+root@gitlab:/# update-permissions
 root@gitlab:/# Ctrl + p + q
 
 $ sudo docker restart gitlab
 ```
 
-# in browser
+# in browser localhost:18080
 ```{text}
 # The very first time you visit GitLab, you will be asked to set up the admin password. 
 # After you change it, you can login with username root and the password you set up.
@@ -66,44 +76,51 @@ http://localhost:18080
 New password : gitlab123123
 Username or email : wooheaven79@gmail.com
 Password : gitlab123123
+
+username : wooheaven
+fullname : wooheaven
+
+create project : Hattrick-Study
 ```
 
-# in container console
+# in Hattrick-Study repository
 ```{bash}
-$ sudo docker exec -it gitlab /bin/bash
+$ pwd
+/home/rwoo/02_WorkSpace/04_Hattrick/Hattrick-Study
 
-root@gitlab:/# echo $0
-/bin/bash
+$ git remote -v
+github	git@github.com:wooheaven/Hattrick-Study.git (fetch)
+github	git@github.com:wooheaven/Hattrick-Study.git (push)
+gitlab	git@gitlab.com:wooheaven/Hattrick-Study.git (fetch)
+gitlab	git@gitlab.com:wooheaven/Hattrick-Study.git (push)
 
-root@gitlab:/# pwd
-/
+$ git remote add myGitLab ssh://git@localhost:220/wooheaven/Hattrick-Study.git
 
-root@gitlab:/# ll
-total 80
-drwxr-xr-x  51 root root 4096 May  1 14:50 ./
-drwxr-xr-x  51 root root 4096 May  1 14:50 ../
--rwxr-xr-x   1 root root    0 May  1 14:50 .dockerenv*
--rw-r--r--   1 root root  182 May  1 13:11 RELEASE
-drwxr-xr-x   2 root root 4096 May  1 13:12 assets/
-drwxr-xr-x   2 root root 4096 May  1 13:12 bin/
-drwxr-xr-x   2 root root 4096 Apr 12  2016 boot/
-drwxr-xr-x   5 root root  340 May  1 14:50 dev/
-drwxr-xr-x  66 root root 4096 May  1 14:50 etc/
-drwxr-xr-x   2 root root 4096 Apr 12  2016 home/
-drwxr-xr-x  10 root root 4096 May  1 13:12 lib/
-drwxr-xr-x   2 root root 4096 Apr 17 20:30 lib64/
-drwxr-xr-x   2 root root 4096 Apr 17 20:30 media/
-drwxr-xr-x   2 root root 4096 Apr 17 20:30 mnt/
-drwxr-xr-x   4 root root 4096 May  1 14:50 opt/
-dr-xr-xr-x 357 root root    0 May  1 14:50 proc/
-drwx------   2 root root 4096 Apr 17 20:31 root/
-drwxr-xr-x   7 root root 4096 May  1 14:50 run/
-drwxr-xr-x   2 root root 4096 Apr 24 22:57 sbin/
-drwxr-xr-x   2 root root 4096 Apr 17 20:30 srv/
-dr-xr-xr-x  13 root root    0 May  1 14:50 sys/
-drwxrwxrwt   2 root root 4096 May  1 14:51 tmp/
-drwxr-xr-x  17 root root 4096 May  1 13:12 usr/
-drwxr-xr-x  19 root root 4096 May  1 13:12 var/
+$ git fetch --all
+Fetching gitlab
+Fetching github
+Fetching myGitLab
+The authenticity of host '[localhost]:220 ([127.0.0.1]:220)' can't be established.
+ECDSA key fingerprint is SHA256:HfNe0PXHAgF0sQk3YPREKtJyd1cGR/8/B432u+WSM68.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[localhost]:220' (ECDSA) to the list of known hosts.
+
+$ git push myGitLab master 
+Counting objects: 4697, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (4000/4000), done.
+Writing objects: 100% (4697/4697), 4.67 MiB | 1.42 MiB/s, done.
+Total 4697 (delta 3093), reused 871 (delta 544)
+remote: Resolving deltas: 100% (3093/3093), done.
+To ssh://localhost:220/wooheaven/Hattrick-Study.git
+ * [new branch]      master -> master
+
+$ git branch -avv
+* master                  863e94c [gitlab/master] Merge branch '262-2018-06-03-hd' into 'master'
+  remotes/github/master   4adbb43 Merge branch '260-2018-06-02-lk-hd' into 'master'
+  remotes/gitlab/HEAD     -> gitlab/master
+  remotes/gitlab/master   863e94c Merge branch '262-2018-06-03-hd' into 'master'
+  remotes/myGitLab/master 863e94c Merge branch '262-2018-06-03-hd' into 'master'
 ```
 
 # start or stop gitlab container
