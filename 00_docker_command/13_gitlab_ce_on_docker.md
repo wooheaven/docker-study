@@ -37,34 +37,32 @@ gitlab/gitlab-ce    latest              b912fec48b7c        7 days ago          
 
 # run gitlab_ce contianer
 ```{bash}
-$ sudo docker run --detach \
---hostname localhost \
+$ sudo docker run \
+--detach \
+--hostname rwoo-A610 \
 --publish 18080:80 \
 --publish 220:22 \
---name gitlab \
+--name myGitLab \
 --restart always \
 --volume `pwd`/srv/gitlab/config:/etc/gitlab \
 --volume `pwd`/srv/gitlab/logs:/var/log/gitlab \
 --volume `pwd`/srv/gitlab/data:/var/opt/gitlab \
---env GITLAB_OMNIBUS_CONFIG="external_url 'http://localhost:18080'; gitlab_rails['gitlab_shell_ssh_port']=220;" \
 gitlab/gitlab-ce:latest
 ```
 
 # configure gitlab_ce container
 ```{bash}
-$ sudo docker exec -it gitlab /bin/bash
+$ docker exec -it myGitLab /bin/bash
 
-root@gitlab:/# update-permissions
+root@rwoo-A610:/# vi /etc/gitlab/gitlab.rb
 
-root@gitlab:/# mkdir /var/opt/gitlab/gitlab-rails/shared/registry
-root@gitlab:/# mkdir /var/log/gitlab/prometheus
-root@gitlab:/# mkdir /var/opt/gitlab/nginx
-root@gitlab:/# mkdir /var/opt/gitlab/nginx/*_cache
+root@rwoo-A610:/# grep -v "#" /etc/gitlab/gitlab.rb | grep "_"
+external_url 'http://rwoo-A610:80'
+gitlab_rails['gitlab_shell_ssh_port'] = 22
 
-root@gitlab:/# update-permissions
-root@gitlab:/# Ctrl + p + q
+root@rwoo-A610:/# exit
 
-$ sudo docker restart gitlab
+$ docker restart myGitLab
 ```
 
 # in browser localhost:18080
