@@ -1,24 +1,24 @@
 0.0.0 [Docker](https://www.docker.com)  
-1.0.0 ╠═1 [docker document in korean](http://www.pyrasis.com/docker.html)  
-2.0.0 ╠═2 install  
-2.1.0 ║&nbsp;&nbsp;╠═2.1 [on Ubuntu14](02_Install_Docker/00_on_ubuntu14.md)  
-2.2.0 ║&nbsp;&nbsp;╠═2.2 [on Ubuntu16](02_Install_Docker/01_on_ubuntu16.md)  
-2.3.0 ║&nbsp;&nbsp;╚═2.3 [nvidia-docker on Ubuntu16](02_Install_Docker/02_install_nvidia-docker_on_ubuntu16.md)  
-3.0.0 ╠═3 [Command Line Interface](https://docs.docker.com/engine/reference/commandline/docker/)  
-3.1.0 ║&nbsp;&nbsp;╠═3.1 [docker exec](https://docs.docker.com/engine/reference/commandline/exec/)  
-3.1.1 ║&nbsp;&nbsp;║&nbsp;&nbsp;╚═3.1.1 [ps -aef](03_Docker_CLI/01_docker_exec.md)  
-3.2.0 ║&nbsp;&nbsp;╚═3.2 [docker images](https://docs.docker.com/engine/reference/commandline/images/)  
-3.2.1 ║&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;╚═3.2.1 [example](00_docker_command/01_docker_images.md)  
-4.0.0 ╚═4 ETC  
-4.1.0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;╚═4.1 [on docker container : install python3 and it's system package](04_ETC/01_install_python352_and_package_as_system_package_on_docker_container_ubuntu16.md)  
-( ║ ╠ ═ ╚ ) 
+1.0.0 ╠═1 install  
+1.1.0 ║ ╠═1.1 [on Ubuntu14](01_Install_Docker/00_on_ubuntu14.md)  
+1.2.0 ║ ╠═1.2 [on Ubuntu16](01_Install_Docker/01_on_ubuntu16.md)  
+1.3.0 ║ ╚═1.3 [nvidia-docker on Ubuntu16](01_Install_Docker/02_install_nvidia-docker_on_ubuntu16.md)  
+2.0.0 ╠═2 [docker : Command Line Interface](https://docs.docker.com/engine/reference/commandline/docker/)  
+2.1.0 ║ ╠═2.1 [exec](https://docs.docker.com/engine/reference/commandline/exec/)  
+2.1.1 ║ ║ ╚═2.1.1 [exec CONTAINER ps -aef](02_Docker_CLI/01_exec/01_docker_exec_CONTAINER_ps-aef.md)  
+2.2.0 ║ ╠═2.2 [images](https://docs.docker.com/engine/reference/commandline/images/)  
+2.2.1 ║ ║ ╚═2.2.1 [example](02_Docker_CLI/02_images/01_docker_images.md)  
+2.3.0 ║ ╚═2.3 [run](https://docs.docker.com/engine/reference/commandline/run/)  
+2.3.1 ║ - ╚═2.3.1 [example](02_Docker_CLI/03_run/01_docker_run.md)  
+3.0.0 ╚═3 ETC  
+3.1.0 - ╠═3.1 [on docker container : install python3 and it's system package](03_ETC/01_install_python352_and_package_as_system_package_on_docker_container_ubuntu16.md)  
+3.2.0 - ╚═3.2 [docker korean document](http://www.pyrasis.com/docker.html)  
 
 # tmp Contents Table
 | Head            | Contents                                                                                                         |
 |-----------------|------------------------------------------------------------------------------------------------------------------|
 |                 | [docker search](00_docker_command/02_docker_search.md)                                                           |
 |                 | [docker pull](00_docker_command/03_docker_pull.md)                                                               |
-|                 | [docker run](00_docker_command/04_docker_run.md)                                                                 |
 |                 | [docker ps](00_docker_command/05_docker_ps.md)                                                                   |
 |                 | [docker port](00_docker_command/06_docker_port.md)                                                               |
 |                 | [docker attach](00_docker_command/07_docker_attach.md)                                                           |

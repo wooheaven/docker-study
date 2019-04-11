@@ -1,3 +1,0 @@
-00_docker_command/00_install_docker/00_on_ubuntu14.md -> 02_Install_Docker/00_on_ubuntu14.md
-00_docker_command/00_install_docker/01_on_ubuntu16.md -> 02_Install_Docker/01_on_ubuntu16.md
-00_docker_command/00_install_docker/02_install_nvidia-docker_on_ubuntu16.md -> 02_Install_Docker/02_install_nvidia-docker_on_ubuntu16.md
