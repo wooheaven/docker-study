@@ -1,4 +1,1 @@
-00_docker_command/15_docker_cp.md -> 02_Docker_CLI/01_cp/01_docker_cp.md
-02_Docker_CLI/01_exec/01_docker_exec_CONTAINER_ps-aef.md -> 02_Docker_CLI/02_exec/01_docker_exec_CONTAINER_ps-aef.md
-02_Docker_CLI/02_images/01_docker_images.md -> 02_Docker_CLI/03_images/01_docker_images.md
-02_Docker_CLI/03_run/01_docker_run.md -> 02_Docker_CLI/04_run/01_docker_run.md
+02_Docker_CLI/05_run/01_docker_run.md -> 02_Docker_CLI/05_run/01_docker_run_-it_-p_-v.md
