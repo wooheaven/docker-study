@@ -1,1 +1,4 @@
-02_Docker_CLI/05_run/01_docker_run.md -> 02_Docker_CLI/05_run/01_docker_run_-it_-p_-v.md
+02_Docker_CLI/05_run/01_docker_run_--cpus.md -> 02_Docker_CLI/06_run/01_docker_run_--cpus.md
+02_Docker_CLI/05_run/02_docker_run_-itd_--rm_--network_--ip_--add-host.md -> 02_Docker_CLI/06_run/02_docker_run_-itd_--rm_--network_--ip_--add-host.md
+02_Docker_CLI/05_run/03_docker_run_-it_-p_-v.md -> 02_Docker_CLI/06_run/03_docker_run_-it_-p_-v.md
+02_Docker_CLI/06_search/01_docker_search.md -> 02_Docker_CLI/07_search/01_docker_search.md
