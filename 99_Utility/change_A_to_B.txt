@@ -1,4 +1,6 @@
-02_Docker_CLI/05_run/01_docker_run_--cpus.md -> 02_Docker_CLI/06_run/01_docker_run_--cpus.md
-02_Docker_CLI/05_run/02_docker_run_-itd_--rm_--network_--ip_--add-host.md -> 02_Docker_CLI/06_run/02_docker_run_-itd_--rm_--network_--ip_--add-host.md
-02_Docker_CLI/05_run/03_docker_run_-it_-p_-v.md -> 02_Docker_CLI/06_run/03_docker_run_-it_-p_-v.md
-02_Docker_CLI/06_search/01_docker_search.md -> 02_Docker_CLI/07_search/01_docker_search.md
+00_docker_command/05_docker_ps.md -> 02_Docker_CLI/06_ps/01_docker_ps.md
+02_Docker_CLI/06_pull/01_docker_pull.md -> 02_Docker_CLI/07_pull/01_docker_pull.md
+02_Docker_CLI/07_run/01_docker_run_--cpus.md -> 02_Docker_CLI/08_run/01_docker_run_--cpus.md
+02_Docker_CLI/07_run/02_docker_run_-itd_--rm_--network_--ip_--add-host.md -> 02_Docker_CLI/08_run/02_docker_run_-itd_--rm_--network_--ip_--add-host.md
+02_Docker_CLI/07_run/03_docker_run_-it_-p_-v.md -> 02_Docker_CLI/08_run/03_docker_run_-it_-p_-v.md
+02_Docker_CLI/08_search/01_docker_search.md -> 02_Docker_CLI/09_search/01_docker_search.md
