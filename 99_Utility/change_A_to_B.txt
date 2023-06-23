@@ -1,2 +1,1 @@
-03_ETC/03_docker_pull_busybox.md -> 03_ETC/01_docker_pull_busybox.md
-03_ETC/01_install_python352_and_package_as_system_package_on_docker_container_ubuntu16.md -> 03_ETC/03_install_python352_and_package_as_system_package_on_docker_container_ubuntu16.md
+00_docker_command/13_gitlab_ce_on_docker.md -> 03_ETC/04_gitlab_ce_on_docker.md
